@@ -26,16 +26,6 @@ $dataHojeHora = date('Y-m-d H:i:s');
 $pagina = $_GET["page"] ?? "";
 $sub_pagina = $_GET["sub_page"] ?? "";
 
-//IMAGEM DO USUÁRIO
-if (isset($_SESSION['idUsuario']) && !empty($_SESSION['idUsuario'])) {
-  $buscarImagemPerfil = $conn->prepare('SELECT imagemPerfil FROM usuarios WHERE id = ?');
-  $buscarImagemPerfil->bind_param("i", $_SESSION['idUsuario']);
-  $buscarImagemPerfil->execute();
-  $resultados = $buscarImagemPerfil->get_result();
-  $imagemPerfil = $resultados->fetch_assoc();
-  $buscarImagemPerfil->close();
-}
-
 $acessoComum = ['1', '2', '3'];
 $acessoStartup = ['1', '2'];
 $acessoEspecial = ['2', '3'];
